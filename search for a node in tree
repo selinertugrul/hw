@@ -1,0 +1,26 @@
+
+tree = {
+    2: [7],
+    7: [6],
+    6: [11],
+    11: []
+}
+
+def dfs(tree, node, valueToSearch, path = []):
+    path.append(node)
+    if node == valueToSearch:
+        return path
+    for child in tree[node]:
+        result = dfs(tree, child, valueToSearch, path)
+        if result:
+            return result
+    path.pop()
+    return None
+
+def getParents(tree, valueToSearch):
+    if not tree:
+        return []
+    return dfs(tree, 2, valueToSearch)
+
+path = getParents(tree, 11)
+print(path) # [2, 7, 6, 11]
