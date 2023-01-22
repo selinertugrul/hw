@@ -1,0 +1,11 @@
+
+def max_perimeter_triangle(lines):
+    lines.sort()
+    for i in range(len(lines)-1, 1, -1):
+        if lines[i] < lines[i-1] + lines[i-2]:
+            return lines[i-2:i+1]
+    return []
+
+lines = [1, 2, 3, 4, 5, 10]
+result = max_perimeter_triangle(lines)
+print(result)
