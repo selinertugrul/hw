@@ -1,0 +1,13 @@
+
+def get_ways(amount, coin_types):
+    ways = [0] * (amount + 1)
+    ways[0] = 1
+    for coin in coin_types:
+        for i in range(coin, amount + 1):
+            ways[i] += ways[i - coin]
+    return ways[amount]
+
+amount = 3
+coin_types = [8, 3, 1, 2]
+ways = get_ways(amount, coin_types)
+print("Number of ways to make change for", amount, ":", ways)
